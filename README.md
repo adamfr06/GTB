@@ -17,6 +17,7 @@ GTB is a Minecraft block guessing game. The server secretly chooses a block, the
 - Next.js app router
 - React client components
 - Local JSON files for development storage
+- Supabase Postgres for production storage
 - Gemini API for question interpretation
 - Minecraft Wiki API/cache for block context
 
@@ -35,6 +36,8 @@ GEMINI_API_KEY=your_google_ai_studio_key
 GEMINI_MODEL=gemini-2.5-flash-lite
 GEMINI_FALLBACK_MODELS=gemini-2.5-flash,gemini-2.0-flash-lite
 WIKI_CONTEXT=1
+SUPABASE_URL=your_supabase_project_url
+SUPABASE_SERVICE_ROLE_KEY=your_supabase_service_role_key
 ADMIN_USERNAME=your_admin_username
 ADMIN_PASSWORD=your_admin_password
 ADMIN_SESSION_SECRET=a_long_random_string
@@ -86,6 +89,18 @@ Development-only files are ignored by git:
 - `data/import-cache/`
 - `public/block-textures/`
 
+When `SUPABASE_URL` and `SUPABASE_SERVICE_ROLE_KEY` are set, games, reports, and corrections are stored in Supabase instead of local JSON files.
+
+## Supabase
+
+Create the database tables:
+
+```bash
+supabase db push
+```
+
+The app only uses the Supabase service-role key on the server. Do not expose `SUPABASE_SERVICE_ROLE_KEY` in browser code.
+
 ## Import Commands
 
 Regenerate the block database:
@@ -106,7 +121,7 @@ This project uses API routes and server-side secrets, so it cannot be hosted as-
 
 Use GitHub for source control and deploy the app to a Next.js host such as Vercel.
 
-Before a public launch, replace local JSON storage with a persistent database for games, reports, and corrections. Local JSON works for development, but serverless hosts do not provide durable writable project files.
+For production, set `SUPABASE_URL` and `SUPABASE_SERVICE_ROLE_KEY` in Vercel so game, report, and correction data persists.
 
 ## Useful Commands
 

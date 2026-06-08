@@ -11,6 +11,7 @@
     "import:textures": "node scripts/run-texture-importer.mjs"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.108.0",
     "next": "^15.3.5",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
