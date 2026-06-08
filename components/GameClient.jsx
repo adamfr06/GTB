@@ -37,7 +37,7 @@ export default function GameClient({ initialGameId = null }) {
 
   useEffect(() => {
     if (!toast) return;
-    const timeout = window.setTimeout(() => setToast(""), 2600);
+    const timeout = window.setTimeout(() => setToast(""), toast.toLowerCase().includes("quota") ? 6500 : 2600);
     return () => window.clearTimeout(timeout);
   }, [toast]);
 
