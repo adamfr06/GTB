@@ -1,0 +1,10 @@
+.env
+node_modules/
+.next/
+data/games.json
+data/reports.json
+data/corrections.json
+data/wiki-cache/
+data/import-cache/
+public/block-textures/
+.DS_Store
