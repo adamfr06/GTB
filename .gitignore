@@ -8,3 +8,4 @@ data/wiki-cache/
 data/import-cache/
 public/block-textures/
 .DS_Store
+.vercel
